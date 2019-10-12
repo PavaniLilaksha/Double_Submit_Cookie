@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Your Charity</title>
+</head>
+<body >
+
+<form id = "myForm" name="myForm" action="HomeServlet" method="post">
+<h1 style="color:#1F618D; text-align: center">CONGRATULATIONS !!!</h1>
+<h2 style="color:#1F618D; text-align: center">YOU WON A HOUSE</h2>
+<br/>
+<p style="color:#1F618D; text-align: center">PLEASE ENTER YOUR NAME AND EMAIL FOR A DONATION</p>
+<br/>
+<p style="color:#1F618D; text-align: center">NAME : <input type="text" name="name"/></p>
+<p style="color:#1F618D; text-align: center">EMAIL : <input type="text" name="email"/></p>
+<br/>
+<p style="color:#1F618D; align: center; padding-left:46.2%">
+<button type="submit" style="color:#1F618D; text-align: center">CLAIM THE PRIZE</button>
+</p>
+</form>
+
+
+<script type="text/javascript">
+
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+
+function appendCookieValue() {
+    var valll = getCookie("CSRF_TOKEN");
+    if (valll != "") {
+
+    	var input = document.createElement("input");
+
+    	input.setAttribute("type", "hidden");
+
+    	input.setAttribute("name", "token");
+
+    	input.setAttribute("value", valll);
+
+    	//append to form element that you want .
+    	document.getElementById("myForm").appendChild(input);
+    }
+}
+
+appendCookieValue();
+
+
+</script>
+</body>
+</html>
